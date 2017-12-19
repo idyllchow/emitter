@@ -28,15 +28,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', index);
 app.use('/android', android);
 app.use('/ios', ios);
 app.use('/about', about);
 
 
-// app.use('/', index);
-app.get('/', function(req, res) {
-    res.render('index', { title: '最新版本' });
-});
+// app.get('/', function(req, res) {
+//     res.render('index', { title: '主页' });
+// });
 
 
 // catch 404 and forward to error handler
