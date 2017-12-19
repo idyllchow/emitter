@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--引入谷歌字体图标-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--引入 materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+  <!--让浏览器知道网站支持手机-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/stylesheets/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <title>应用测试中心</title>
+</head>
+
+<body>
+  <!--在引入materialize.js之前引入jquery（很关键，materialize.js依赖jquery）-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+
+  <header>
+        
+        <nav class="top-nav light-blue darken-4">
+    <div class="container">
+    <div class="nav-wrapper"><a class="page-title">应用测试中心-<%= title %></a></div>
+    </div>
+    </nav>        
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons">menu</i></a></div>
+      <ul id="nav-mobile" class="side-nav fixed">
+        <li class="logo"><a id="logo-container" href="/" class="brand-logo">
+            <img id="front-page-logo" type="image/ico" src="images/ic_android_release.png"></img></a></li>
+       
+        <li class="bold "><a href="/android" class="waves-effect waves-teal">Android</a></li>
+        <li class="bold "><a href="/ios" class="waves-effect waves-teal">iOS</a></li>
+                
+        <li class="bold "><a href="/about" class="waves-effect  waves-teal">关于</a></li>
+        
+      </ul>
+    </header>
+    
+    <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/javascripts/materialize.js"></script>
+  <script src="/javascripts/init.js"></script>
+</body>
+</html>
