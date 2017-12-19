@@ -8,8 +8,6 @@ var bodyParser = require('body-parser');
 // var ejs = require('ejs');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
-var download = require('./routes/download');
 var android = require('./routes/android');
 var ios = require('./routes/ios');
 var about = require('./routes/about');
@@ -18,30 +16,28 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
-// app.engine('html',ejs.__express);
-// app.set('view engine', 'html');
-// app.engine('.html', require('ejs').__express);
-// //设置视图模板的默认后缀名为.html,避免了每次res.Render("xx.html")的尴尬
-// app.set('view engine', 'html');
-// //设置模板文件文件夹,__dirname为全局变量,表示网站根目录
-// app.set('views', __dirname + '/views');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// 设定view engine变量，意为网页模板引擎
+//app.set('view engine', 'ejs');
+app.set( 'view engine', 'html' );
+app.engine( '.html', require( 'ejs' ).__express );
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/download', download);
 app.use('/android', android);
 app.use('/ios', ios);
 app.use('/about', about);
+
+
+// app.use('/', index);
+app.get('/', function(req, res) {
+    res.render('index', { title: '最新版本' });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
