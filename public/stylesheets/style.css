@@ -5,8 +5,9 @@
  *
  * Made By MaterializeCSS.com
  */
+ /**e8e2d3*/
  html, body {
-            background: #e8e2d3;
+            background: #ffffff;
             padding: 0;
             margin: 0;
             font-family: sans-serif;
@@ -68,7 +69,7 @@ ul.side-nav.fixed li a {
 }
 
 #fisrt-page, #wechat-android, #wechat-ios {
-            background: #e8e2d3;
+            background: #ffffff;
             display: none;
 }
 
@@ -77,6 +78,13 @@ ul.side-nav.fixed li a {
             padding: 20px;
             font-size: 20px;
 }
+
+.seedland-logo {
+            background-image: url(../images/ic_android_release.png);
+            width: 10%;
+            padding-bottom: 24.09%;
+            margin: 0 auto;
+        }
 
 .list-image {
     width: 50px;
