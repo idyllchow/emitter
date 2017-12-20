@@ -1,6 +1,6 @@
 <% data= 'index'; %>
 <% include header.ejs %>
-<div class="content-text">
+<div class="">
 <ul class="collection with-header">
         <li class="collection-header"><h4>Android</h4></li>
         <li class="collection-item">Release版</li>
@@ -8,10 +8,68 @@
 </ul>
 </div>
 </br>
-<div class="content-text">
+<div class="">
 <ul class="collection with-header">
         <li class="collection-header"><h4>iOS</h4></li>
         <li class="collection-item">Release版</li>
         <li class="collection-item">Debug版</li>
 </ul>
 </div>
+<script type="text/javascript">
+  function downloadApp(){
+  var u = navigator.userAgent;
+  isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+  isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+  //三元运算
+  // window.location.href = isAndroid? urls.android : isiOS? urls.ios : urls.other;
+  //简化
+  if (isAndroid){
+    window.location.href = getAndroidUrl();
+  } else if (isiOS){
+    if (isWechat()) {
+      Materialize.toast('请使用Safari浏览器下载', 2000);
+    } else {
+      window.location.href = getiOSUrl();
+    }
+  } else {
+    Materialize.toast('请使用Android或iOS设备下载', 2000);
+  }
+}
+
+function isWechat() {
+      var ua = window.navigator.userAgent.toLowerCase();
+      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+          return true;
+      } else {
+          return false;
+      }
+  }
+ var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+ var winWidth = typeof window.innerWidth != 'undefined' ? window.innerWidth : document.documentElement.clientWidth;
+	var weixinTip = $('<div id="weixinTip"><p><img src="/images/live_weixin.png" alt="微信打开"/></p></div>');
+if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && isWechat()) {
+    // document.body.innerHTML = "</br>&nbsp&nbsp因为微信的限制，请点击右上角选择从safari浏览器打开↗️";
+} else if (/(Android)/i.test(navigator.userAgent) && isWechat()) {
+    document.body.innerHTML = "div {border: 2px solid black; background-color: blue;} </br>&nbsp1. 请点击右上角那三个点</br>  &nbsp2. 选择在浏览器打开";
+    // $("body").append(weixinTip);
+} else {
+    
+};
+$("#weixinTip").css({
+			"position":"fixed",
+			"left":"0",
+			"top":"0",
+			"height":winHeight,
+			"width":winWidth,
+			"z-index":"1000",
+			"background-color":"rgba(0,0,0,0.8)",
+			"filter":"alpha(opacity=80)",
+		});
+		$("#weixinTip p").css({
+			"text-align":"center",
+			"margin-top":"10%",
+			"padding-left":"5%",
+			"padding-right":"5%"
+		});
+
+</script>
