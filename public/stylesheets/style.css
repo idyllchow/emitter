@@ -5,6 +5,12 @@
  *
  * Made By MaterializeCSS.com
  */
+ html, body {
+            background: #e8e2d3;
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
 
 .icon-block {
   padding: 0 15px;
@@ -45,6 +51,31 @@ ul.side-nav.fixed li a {
 .content-text {
     padding-left: 0px;
     margin-left: 300px;
+}
+
+.arrow {
+            background-image: url(../images/up_arrow.png);
+            width: 25%;
+            padding-bottom: 26.85%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            float: right;
+            margin-top: 4px;
+            margin-right: 4px;
+}
+.clear {
+            clear: both;
+}
+
+#fisrt-page, #wechat-android, #wechat-ios {
+            background: #e8e2d3;
+            display: none;
+}
+
+.hint {
+            color: #222;
+            padding: 20px;
+            font-size: 20px;
 }
 
 .list-image {

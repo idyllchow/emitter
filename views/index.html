@@ -1,20 +1,5 @@
 <% data= 'index'; %>
 <% include header.ejs %>
-<div class="">
-<ul class="collection with-header">
-        <li class="collection-header"><h4>Android</h4></li>
-        <li class="collection-item">Release版</li>
-        <li class="collection-item">Debug版</li>
-</ul>
-</div>
-</br>
-<div class="">
-<ul class="collection with-header">
-        <li class="collection-header"><h4>iOS</h4></li>
-        <li class="collection-item">Release版</li>
-        <li class="collection-item">Debug版</li>
-</ul>
-</div>
 <script type="text/javascript">
   function downloadApp(){
   var u = navigator.userAgent;
@@ -44,32 +29,68 @@ function isWechat() {
           return false;
       }
   }
- var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
- var winWidth = typeof window.innerWidth != 'undefined' ? window.innerWidth : document.documentElement.clientWidth;
-	var weixinTip = $('<div id="weixinTip"><p><img src="/images/live_weixin.png" alt="微信打开"/></p></div>');
-if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && isWechat()) {
-    // document.body.innerHTML = "</br>&nbsp&nbsp因为微信的限制，请点击右上角选择从safari浏览器打开↗️";
-} else if (/(Android)/i.test(navigator.userAgent) && isWechat()) {
-    document.body.innerHTML = "div {border: 2px solid black; background-color: blue;} </br>&nbsp1. 请点击右上角那三个点</br>  &nbsp2. 选择在浏览器打开";
-    // $("body").append(weixinTip);
-} else {
-    
-};
-$("#weixinTip").css({
-			"position":"fixed",
-			"left":"0",
-			"top":"0",
-			"height":winHeight,
-			"width":winWidth,
-			"z-index":"1000",
-			"background-color":"rgba(0,0,0,0.8)",
-			"filter":"alpha(opacity=80)",
-		});
-		$("#weixinTip p").css({
-			"text-align":"center",
-			"margin-top":"10%",
-			"padding-left":"5%",
-			"padding-right":"5%"
-		});
 
+// if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && isWechat()) {
+//     // document.body.innerHTML = "</br>&nbsp&nbsp因为微信的限制，请点击右上角选择从safari浏览器打开↗️";
+// } else if (/(Android)/i.test(navigator.userAgent) && isWechat()) {
+//     // document.body.innerHTML = "</br>&nbsp1. 请点击右上角那三个点</br>  &nbsp2. 选择在浏览器打开";
+//     // $("body").append(weixinTip);
+//     el = document.getElementById('wechat');
+//                     el.style.display = 'block';
+                    
+    
+// } else {
+    
+//     el = document.getElementById('wechat');
+//                     el.style.display = 'block';
+//     console.log('=========el=======' + el);          
+    
+// };
+
+
+
+window.addEventListener('DOMContentLoaded', function () {                
+                var el;
+                if (isWechat()) {
+                    
+                }
+                if (/(Android)/i.test(navigator.userAgent) && isWechat()) {
+                    el = document.getElementById('wechat-android');
+                    el.style.display = 'block';
+                    return;
+                }
+                if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && isWechat) {
+                    el = document.getElementById('wechat-ios');
+                    el.style.display = 'block';
+                    return;
+                }
+                document.getElementById('default').style.display = 'block';
+            });
 </script>
+
+<div id="fisrt-page">
+<ul class="collection with-header">
+        <li class="collection-header"><h4>Android</h4></li>
+        <li class="collection-item">Release版</li>
+        <li class="collection-item">Debug版</li>
+</ul>
+</div>
+
+<div id="fisrt-page">
+<ul class="collection with-header">
+        <li class="collection-header"><h4>iOS</h4></li>
+        <li class="collection-item">Release版</li>
+        <li class="collection-item">Debug版</li>
+</ul>
+</div>
+
+<div id="wechat-android">
+    <div class="arrow"></div>
+    <div class="clear"></div>
+    <div class="hint">请点击右上角按钮，然后在弹出的菜单中选择「在浏览器打开」下载 实地通 App。</div>
+</div>
+<div id="wechat-ios">
+    <div class="arrow"></div>
+    <div class="clear"></div>
+    <div class="hint">请点击右上角按钮，然后在弹出的菜单中选择「在Safari中打开」下载 实地通 App。</div>
+</div>
