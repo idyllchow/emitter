@@ -1,5 +1,6 @@
 <% data= 'index'; %>
 <% include header.ejs %>
+<main>
 <script type="text/javascript">
   function downloadApp(){
   var u = navigator.userAgent;
@@ -30,30 +31,9 @@ function isWechat() {
       }
   }
 
-// if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && isWechat()) {
-//     // document.body.innerHTML = "</br>&nbsp&nbsp因为微信的限制，请点击右上角选择从safari浏览器打开↗️";
-// } else if (/(Android)/i.test(navigator.userAgent) && isWechat()) {
-//     // document.body.innerHTML = "</br>&nbsp1. 请点击右上角那三个点</br>  &nbsp2. 选择在浏览器打开";
-//     // $("body").append(weixinTip);
-//     el = document.getElementById('wechat');
-//                     el.style.display = 'block';
-                    
-    
-// } else {
-    
-//     el = document.getElementById('wechat');
-//                     el.style.display = 'block';
-//     console.log('=========el=======' + el);          
-    
-// };
-
-
 
 window.addEventListener('DOMContentLoaded', function () {                
                 var el;
-                if (isWechat()) {
-                    
-                }
                 if (/(Android)/i.test(navigator.userAgent) && isWechat()) {
                     el = document.getElementById('wechat-android');
                     el.style.display = 'block';
@@ -64,23 +44,23 @@ window.addEventListener('DOMContentLoaded', function () {
                     el.style.display = 'block';
                     return;
                 }
-                document.getElementById('default').style.display = 'block';
+                document.getElementById('fisrt-page').style.display = 'block';
             });
 </script>
 
 <div id="fisrt-page">
 <ul class="collection with-header">
         <li class="collection-header"><h4>Android</h4></li>
-        <li class="collection-item">Release版</li>
-        <li class="collection-item">Debug版</li>
+        <a href="#!" class="collection-item">Release版</a>
+        <a href="#!" class="collection-item">Debug版</a>
 </ul>
 </div>
 
-<div id="fisrt-page">
+
 <ul class="collection with-header">
         <li class="collection-header"><h4>iOS</h4></li>
-        <li class="collection-item">Release版</li>
-        <li class="collection-item">Debug版</li>
+        <a href="#!" class="collection-item">Release版</a>
+        <a href="#!" class="collection-item">Debug版</a>
 </ul>
 </div>
 
@@ -97,4 +77,4 @@ window.addEventListener('DOMContentLoaded', function () {
     <div align="center"><img src="images/ic_android_release.png"></img></div>
 </div>
 
-
+</main>
