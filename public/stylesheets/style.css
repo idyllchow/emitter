@@ -49,10 +49,9 @@ ul.side-nav.fixed li a {
     padding: 0 30px;
 }
 
-.content-text {
-    padding-left: 0px;
-    margin-left: 300px;
-}
+/*.content-text {
+    margin-left: 200px;
+}*/
 
 .arrow {
             background-image: url(../images/up_arrow.png);
@@ -8950,14 +8949,14 @@ ul.side-nav.fixed:hover {
 }
 
 nav.top-nav {
-    height: 110px;
+    height: 65px;
     -webkit-box-shadow: none;
     box-shadow: none
 }
 
 nav.top-nav a.page-title {
-    line-height: 110px;
-    font-size: 48px
+    line-height: 65px;
+    font-size: 30px
 }
 
 a.button-collapse.top-nav {
@@ -8966,7 +8965,7 @@ a.button-collapse.top-nav {
     height: 48px;
     width: 48px;
     left: 7.5%;
-    top: 55px;
+    top: 10px;
     float: none;
     margin-left: -8px;
     color: #fff;
@@ -8975,7 +8974,7 @@ a.button-collapse.top-nav {
 }
 
 a.button-collapse.top-nav.full {
-    line-height: 110px
+    line-height: 70px
 }
 
 a.button-collapse.top-nav i {
@@ -8994,7 +8993,7 @@ a.button-collapse.top-nav i {
     }
 
     nav .nav-wrapper a.page-title {
-        font-size: 36px
+        font-size: 20px
     }
 }
 
