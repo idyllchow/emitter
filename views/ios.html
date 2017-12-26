@@ -1,13 +1,34 @@
 <% data= 'iOS'; %>
 <% include header.ejs %>
 <main>
+<script type="text/javascript">
+  
+function isWechat() {
+      var ua = window.navigator.userAgent.toLowerCase();
+      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+          return true;
+      } else {
+          return false;
+      }
+  }
 
-<div class="collection">
-    <a href="#!" class="collection-item"><span class="green badge">release</span>6.20</a>
-    <a href="#!" class="collection-item"><span class="blue badge">debug</span>6.19</a>
-    <a href="#!" class="collection-item"><span class="green badge">release</span>6.18</a>
-  </div>
-
+window.addEventListener('DOMContentLoaded', function () {                
+                var el;
+                if (/(Android)/i.test(navigator.userAgent) && isWechat()) {
+                    el = document.getElementById('wechat-android');
+                    el.style.display = 'block';
+                    return;
+                }
+                if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && isWechat) {
+                    el = document.getElementById('wechat-ios');
+                    el.style.display = 'block';
+                    return;
+                }
+                document.getElementById('nav-block').style.display = 'block';
+                
+            });
+</script>
+<% include list.ejs %>
 </main>
 
 

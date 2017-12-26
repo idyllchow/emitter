@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // var ejs = require('ejs');
-
+// var init = require('./routes/authentication/init');
 var index = require('./routes/index');
 var android = require('./routes/android');
 var ios = require('./routes/ios');
@@ -28,7 +28,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+var init = require('./routes/authentication/init');
+app.use('/', init);
+
+// app.use('/', index);
 app.use('/android', android);
 app.use('/ios', ios);
 app.use('/about', about);

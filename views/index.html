@@ -44,37 +44,111 @@ window.addEventListener('DOMContentLoaded', function () {
                     el.style.display = 'block';
                     return;
                 }
-                document.getElementById('fisrt-page').style.display = 'block';
+                document.getElementById('nav-block').style.display = 'block';
+                document.getElementById('android-block').style.display = 'block';
+                document.getElementById('ios-block').style.display = 'block';
+
+                // document.getElementById('modal1').style.display = 'block';
+                // $('.modal').modal();
+                // $(document).ready(function(){
+                //   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+
+                // $('.modal').modal();
+                // });
             });
+
+
+
+
+$(document).ready(function(){
+    // .modal-trigger类所在的a标签的href属性必须制定模态框的id才能被触发。
+    $('.modal').modal({
+        dismissible: false, // 点击模态外面模态消失关闭
+        opacity: .5, // 相对于背景的不透明度
+        in_duration: 300, // 显示特效的时间
+        out_duration: 200, // 消失特效时间
+        starting_top: '4%', // 启动时的样式属性
+        ending_top: '10%', // 结束时的样式属性
+        ready: function(modal, trigger) { // 模态加载完成触发事件
+            // alert("Ready"); 
+            console.log(modal, trigger);
+        },
+        complete: function() { 
+            // alert('Closed'); 
+        } // 关闭时触发的事件
+    });
+    $('#modal1').modal('open');
+    // $('.open').on('click', function() {
+    //     $('#modal1').modal('open');
+    // });
+    $('.close').on('click', function() {
+        $('#modal1').modal('close');
+    });
+});
+
 </script>
 
-<div id="fisrt-page">
+<div id="android-block">
 <ul class="collection with-header">
         <li class="collection-header"><h4>Android</h4></li>
-        <a href="#!" class="collection-item">Release版</a>
-        <a href="#!" class="collection-item">Debug版</a>
+        <% if(androidArchives.length>0) {%>     
+        <% androidArchives.forEach(function(result){ %>
+        <a href="http://localhost:3000/download/<%= result.name %>" class="collection-item"><%=result.name %> <span class="green badge"><%=result.type %></span></a>    
+        <%})%>
+        <%} else {%>
+        <p>没有可下载apk</p>
+        <%}%>
 </ul>
 </div>
 
-
+<div id="ios-block">
 <ul class="collection with-header">
         <li class="collection-header"><h4>iOS</h4></li>
-        <a href="#!" class="collection-item">Release版</a>
-        <a href="#!" class="collection-item">Debug版</a>
+        <% if(iosArchives.length>0) {%>     
+        <% iosArchives.forEach(function(result){ %>
+        <a href="http://localhost:3000/<%= result.name %>" class="collection-item"><%=result.name %> <span class="green badge"><%=result.type %></span></a>    
+        <%})%>
+        <%} else {%>
+        <p>没有可下载ipa</p>
+        <%}%>
 </ul>
 </div>
+
 
 <div id="wechat-android">
     <div class="arrow"></div>
     <div class="clear"></div>
-    <div class="hint">请点击右上角按钮，然后在弹出的菜单中选择「在浏览器打开」下载 实地通 App。</div>
+    <div class="hint">请点击右上角按钮，然后在弹出的菜单中选择「在浏览器打开」进入应用测试中心。</div>
     <div align="center"><img src="images/ic_android_release.png"></img></div>
 </div>
 <div id="wechat-ios">
     <div class="arrow"></div>
     <div class="clear"></div>
-    <div class="hint">请点击右上角按钮，然后在弹出的菜单中选择「在Safari中打开」下载 实地通 App。</div>
+    <div class="hint">请点击右上角按钮，然后在弹出的菜单中选择「在Safari中打开」进入应用测试中心。</div>
     <div align="center"><img src="images/ic_android_release.png"></img></div>
 </div>
+
+ 
+ <div id="modal1" class="modal" >
+          <div class="modal-content">
+            
+            <div class="row">
+            <div class="input-field col s12">
+            <input id="username" type="text" class="validate">
+            <label for="username">账号</label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">密码</label>
+            </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">取消</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " type="submit">登录</a>
+          </div>
+  </div>
 
 </main>

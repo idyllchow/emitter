@@ -1,11 +1,16 @@
-<main>
+
 	<div class="content-text">
 		<div class="collection content-text">
-  			<a href="#!" class="collection-item">6.5.32</a>
-  			<a href="#!" class="collection-item">6.5.33</a>
-  			<a href="#!" class="collection-item">6.5.34</a>
-  			<a href="#!" class="collection-item">6.5.35</a>
+  			
+			<% if(archives.length>0) {%>     
+        	<% archives.forEach(function(result){ %>
+        		<a href="http://localhost:3000/<%= result.platform %>/<%= result.name %>" class="collection-item"><%=result.name %> <span class="green badge"><%=result.type %></span></a>    
+        	<%})%>
+        	<%} else {%>
+        	<p>&nbsp&nbsp没有可下载版本</p>
+        	<%}%>
+
+
 		</div>
 	</div>
-</main>
 
