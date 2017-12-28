@@ -1,0 +1,87 @@
+<% data= '关于'; %>
+<% include header.ejs %>
+<main>
+<script type="text/javascript">
+  
+function isWechat() {
+      var ua = window.navigator.userAgent.toLowerCase();
+      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+window.addEventListener('DOMContentLoaded', function () {                
+                var el;
+                if (/(Android)/i.test(navigator.userAgent) && isWechat()) {
+                    el = document.getElementById('wechat-android');
+                    el.style.display = 'block';
+                    return;
+                }
+                if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && isWechat) {
+                    el = document.getElementById('wechat-ios');
+                    el.style.display = 'block';
+                    return;
+                }
+                document.getElementById('nav-block').style.display = 'block';
+                document.getElementById('android-block').style.display = 'block';
+                document.getElementById('ios-block').style.display = 'block';
+            });
+
+
+
+// $('.submit').on('click', function(){
+//             console.log('upload click=============');
+//             var galleryList = $('#gallery')[0].files;
+//             var formData = new FormData();
+          
+//             for(let j = 0;j<galleryList.length;j++){
+//                 formData.append('gallery', galleryList[j]);
+//             }
+//             $.ajax({
+//                 url: '/upload/fields',
+//                 type:'post',
+//                 processData:false,
+//                 contentType:false,
+//                 data: formData,
+//                 success: function(data){
+//                     console.log('file upload success')
+//                 }
+//             })
+//         });
+
+
+
+</script>
+
+
+<form action="./management" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" size="50" />
+    <br />
+    <input type="submit" value="上传文件" />
+</form>
+
+
+<!-- <div id="android-block">
+<ul class="collection with-header">
+        <li class="collection-header"><h6>apk上传</h6></li>    
+        <div class="collection-item"><div class="right-align"> <div class="chip">上传</div></div></div> 
+
+    <div>
+        <input type="file" name="" id="gallery" multiple>
+    </div>
+    <div>
+        <button class="submit">上传</button>
+    </div>      
+</ul>
+</div>
+
+<div id="ios-block">
+<ul class="collection with-header">
+        <li class="collection-header"><h6>ipa上传</h6></li>    
+        <div class="collection-item"><div class="right-align"> <div class="chip">上传</div></div></a>
+</ul>
+</div> -->
+
+</main>

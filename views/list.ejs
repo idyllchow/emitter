@@ -4,7 +4,7 @@
   			
 			<% if(archives.length>0) {%>     
         	<% archives.forEach(function(result){ %>
-        		<a href="http://localhost:3000/<%= result.platform %>/<%= result.name %>" class="collection-item"><%=result.name %> <span class="green badge"><%=result.type %></span></a>    
+        		<a href="http://localhost:3000/<%= result.platform %>/<%= result.name %>" class="collection-item"><%=result.name %> <div class="right-align"> <div class="chip"><%=result.type %></div></div></a>    
         	<%})%>
         	<%} else {%>
         	<p>&nbsp&nbsp没有可下载版本</p>

@@ -4,7 +4,7 @@ var path = require("path");
 const fs = require('fs');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', require('connect-ensure-login').ensureLoggedIn(), function(req, res, next) {
   var iosPath = path.join(__dirname, '../public/archives/history/ios/');
   var archives = [];
 

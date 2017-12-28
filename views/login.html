@@ -1,7 +1,29 @@
-<% data= 'login'; %>
+<!DOCTYPE html>
+<html>
+<head>
+  <!--引入谷歌字体图标-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--引入 materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
-<main>
+  <!--让浏览器知道网站支持手机-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- CSS  -->
+  <link href="/images/seedland-32.png" rel="icon" type="image/ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <title>应用测试中心</title>
+</head>
+
+<body>
+  <!--在引入materialize.js之前引入jquery（很关键，materialize.js依赖jquery）-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+
+  <main>
 <script type="text/javascript">
+
 function isWechat() {
       var ua = window.navigator.userAgent.toLowerCase();
       if (ua.match(/MicroMessenger/i) == 'micromessenger') {
@@ -56,33 +78,6 @@ $(document).ready(function(){
 
 </script>
 
-<div id="android-block">
-<ul class="collection with-header">
-        <li class="collection-header"><h4>Android</h4></li>
-        <% if(androidArchives.length>0) {%>     
-        <% androidArchives.forEach(function(result){ %>
-        <a href="http://localhost:3000/download/<%= result.name %>" class="collection-item"><%=result.name %> <span class="green badge"><%=result.type %></span></a>    
-        <%})%>
-        <%} else {%>
-        <p>没有可下载apk</p>
-        <%}%>
-</ul>
-</div>
-
-<div id="ios-block">
-<ul class="collection with-header">
-        <li class="collection-header"><h4>iOS</h4></li>
-        <% if(iosArchives.length>0) {%>     
-        <% iosArchives.forEach(function(result){ %>
-        <a href="http://localhost:3000/<%= result.name %>" class="collection-item"><%=result.name %> <span class="green badge"><%=result.type %></span></a>    
-        <%})%>
-        <%} else {%>
-        <p>没有可下载ipa</p>
-        <%}%>
-</ul>
-</div>
-
-
 <div id="wechat-android">
     <div class="arrow"></div>
     <div class="clear"></div>
@@ -97,26 +92,59 @@ $(document).ready(function(){
 </div>
 
  
- <div id="modal1" class="modal" >
+ <form id="modal1" class="modal" action="/login" method="post">
           <div class="modal-content">
-            
+            <!-- <div>
+            <label>Username:</label>
+            <input type="text" name="username"/><br/>
+            </div>
+            <div>
+            <label>Password:</label>
+            <input type="password" name="password"/>
+            </div> -->
             <div class="row">
             <div class="input-field col s12">
-            <input id="username" type="text" class="validate">
+            <input id="username" type="text" name="username" class="validate">
             <label for="username">账号</label>
             </div>
             </div>
             <div class="row">
             <div class="input-field col s12">
-            <input id="password" type="password" class="validate">
+            <input id="password" type="password" name="password" class="validate">
             <label for="password">密码</label>
             </div>
             </div>
           </div>
           <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">取消</a>
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " type="submit">登录</a>
+            <a class="modal-action modal-close waves-effect waves-red btn-flat ">取消</a>
+          <input class="modal-action modal-close waves-effect waves-green btn-flat " type="submit" value="登录"/>
           </div>
-  </div>
+          <!-- <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-red btn-flat ">取消</a>
+            <a class="modal-action modal-close waves-effect waves-green btn-flat " type="button" >登录</a>
+          </div> -->
+
+           <!-- <form action="/login" method="post">
+            <div>
+            <label>Username:</label>
+            <input type="text" name="username"/><br/>
+            </div>
+            <div>
+            <label>Password:</label>
+            <input type="password" name="password"/>
+            </div>
+            <div>
+            <input type="submit" value="Submit"/>
+            </div>
+          </form> -->
+  </form>
 
 </main>
+    
+    <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+</body>
+</html>
+

@@ -5,12 +5,13 @@ const fs = require('fs');
 var async = require('async');
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/presdt";
+var passport = require('passport');
 
 var pv;
 var totalDownload;
  
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', require('connect-ensure-login').ensureLoggedIn(), function(req, res, next) {
   // 显示服务器文件 
   // 文件目录 
   var androidPath = path.join(__dirname, '../public/archives/latest/android/');
@@ -30,41 +31,6 @@ router.get('/', function(req, res, next) {
   //    db.close();
   //  });
   // });
-
-  // walk(androidPath, function(err, androidResults) {
-  //   if (err) throw err;
-  //   if(androidResults.length>0) {
-  //     // androidArchives = results;
-  //     // res.render('download.html', {title:"实地通发布平台", androidArchives:androidArchives, iosArchives:iosArchives});
-  //   } 
-
-  //   walk(iosPath, function(err, iosResults) {
-  //     if (err) throw err;
-  //     // if(iosResults.length>0) {
-  //       console.log("totalDownload: " + totalDownload);
-  //       res.render('index', {title:"主页", androidArchives:androidResults, iosArchives:iosResults, totalDownload: totalDownload});
-  //     // } 
-  //   });
-  // });
-
-//   async.waterfall([
-//     function(callback){
-//         callback(null, 'one', 'two');
-//     },
-//     function(arg1, arg2, callback){
-//         console.log('arg1 => ' + arg1);
-//         console.log('arg2 => ' + arg2);
-//         callback(null, 'three');
-//     },
-//     function(arg3, callback){
-//         console.log('arg3 => ' + arg3);
-//         callback(null, 'done');
-//     }
-// ], function (err, result) {
-//    console.log('err => ' + err);
-//    console.log('result => ' + result);
-// });
-
 
 async.waterfall([
     function(callback){
@@ -96,8 +62,6 @@ async.waterfall([
     }
   ]);
 });
-
-
 
 // 实现文件下载
 router.get('/download/:fileName', function(req, res, next) {
